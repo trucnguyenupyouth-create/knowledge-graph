@@ -14,6 +14,7 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import dagre from 'dagre';
+import clsx from 'clsx';
 import { Loader2, Layers, Microscope, X, Filter, Target } from 'lucide-react';
 
 import ConceptNode from './ConceptNode';
