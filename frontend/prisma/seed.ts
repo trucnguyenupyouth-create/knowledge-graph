@@ -35,10 +35,10 @@ async function main() {
     const edgesFile = fs.existsSync(path.join(dataDir, 'edges.csv')) ? path.join(dataDir, 'edges.csv') : path.join(dataDir, 'edges1.csv');
 
     console.log('Reading concepts from:', nodesFile);
-    const nodesRecords = parse(fs.readFileSync(nodesFile, 'utf8'), { columns: true, skip_empty_lines: true });
+    const nodesRecords = parse(fs.readFileSync(nodesFile, 'utf8'), { columns: true, skip_empty_lines: true }) as any[];
     
     console.log('Reading edges from:', edgesFile);
-    const edgesRecords = parse(fs.readFileSync(edgesFile, 'utf8'), { columns: true, skip_empty_lines: true });
+    const edgesRecords = parse(fs.readFileSync(edgesFile, 'utf8'), { columns: true, skip_empty_lines: true }) as any[];
 
     console.log(`Parsed ${nodesRecords.length} concepts.`);
 
