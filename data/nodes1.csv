@@ -1,0 +1,141 @@
+concept_code,grade_level,topic_category,concept_name_vn,concept_description,mastery_question,common_misconceptions
+RAD-G9-01,9,Điều kiện xác định,Tìm ĐKXĐ của biểu thức dưới căn,Xác định điều kiện để biểu thức A trong căn bậc hai luôn không âm (A >= 0).,Tìm ĐKXĐ của căn thức: \sqrt{2x - 4},1. Quên đổi chiều bất phương trình khi chia cho số âm. 2. Cho rằng biểu thức dưới căn phải > 0 thay vì >= 0. 3. Bỏ sót ĐKXĐ khi biểu thức nằm dưới mẫu số.
+RAD-G9-02,9,Điều kiện xác định,Tìm ĐKXĐ của phân thức chứa căn,Xác định điều kiện để mẫu số chứa căn thức khác 0. Kết hợp với ĐKXĐ của căn.,Tìm ĐKXĐ của biểu thức: 1/(\sqrt{x} - 3),1. Chỉ giải mẫu khác 0 mà quên điều kiện x >= 0 của căn. 2. Nhầm lẫn giữa \sqrt{x} != 3 và x != 3 (đúng ra là x != 9).
+RAD-G9-03,9,Biến đổi căn thức,Đưa thừa số ra ngoài dấu căn,Áp dụng quy tắc \sqrt{a^2b} = |a|\sqrt{b} để đơn giản hóa biểu thức dưới căn.,"Rút gọn: \sqrt{4x^2y} với x<0, y>=0",1. Đưa ra ngoài căn nhưng quên trị tuyệt đối. 2. Sai dấu khi phá trị tuyệt đối với điều kiện x < 0.
+RAD-G9-04,9,Biến đổi căn thức,Trục căn thức ở mẫu (dạng đơn),Nhân cả tử và mẫu với một căn thức để làm mất căn ở mẫu.,Trục căn thức: 5/(2\sqrt{x}),1. Nhân cả tử và mẫu với 2\sqrt{x} thay vì chỉ \sqrt{x}. 2. Rút gọn sai giữa tử và mẫu sau khi trục.
+RAD-G9-05,9,Biến đổi căn thức,Trục căn thức bằng lượng liên hợp,Nhân tử và mẫu với lượng liên hợp để tạo HĐT số 3.,Trục căn thức: 2/(\sqrt{x} - 1),1. Nhân sai lượng liên hợp. 2. Khai triển sai mẫu sau khi nhân liên hợp (VD: (\sqrt{x}-1)(\sqrt{x}+1) thành x+1).
+RAD-G9-06,9,Rút gọn,Rút gọn biểu thức chứa căn (Tổng hợp),"Thực hiện chuỗi: Quy đồng, cộng/trừ/nhân/chia, thu gọn.",Rút gọn P.,1. Sai lầm khi phân phối dấu trừ trước phân thức. 2. Triệt tiêu sai các số hạng không phải là nhân tử chung.
+RAD-G9-07,9,Câu hỏi phụ,Tính giá trị biểu thức khi biết x,Thay giá trị x vào biểu thức đã rút gọn để tính.,Tính P khi x = 4 - 2\sqrt{3},1. Không kiểm tra x có thỏa mãn ĐKXĐ trước khi thay. 2. Không rút gọn x trước khi thay vào \sqrt{x}.
+RAD-G9-08,9,Câu hỏi phụ,Giải bất phương trình chứa căn,"Tìm x để biểu thức P > 0, P < 0.",Tìm x để P < 0,1. Bỏ qua việc xét dấu mẫu số. 2. Nhân chéo biểu thức chứa ẩn mà không biết rõ dấu. 3. Quên kết hợp ĐKXĐ.
+RAD-G9-09,9,Câu hỏi phụ,Giải phương trình chứa căn,Tìm x để biểu thức P nhận một giá trị cụ thể.,Tìm x để P = 1,1. Quên bình phương hai vế hoặc chuyển vế sai. 2. Không loại nghiệm ngoại lai không thỏa mãn ĐKXĐ.
+RAD-G9-10,9,Câu hỏi phụ,Tìm x nguyên để P nguyên (Ước số),"Phân tích P = A + B/C(\sqrt{x}), dùng tính chất chia hết.",Tìm x nguyên để P nhận giá trị nguyên.,1. Xét thiếu các ước số âm của tử số. 2. Giải ra \sqrt{x} nhưng quên bình phương để tìm x.
+RAD-G9-11,9,Câu hỏi phụ,Tìm x để P nguyên (Chặn/Đánh giá),Sử dụng bất đẳng thức hoặc tập giá trị để chặn P.,Tìm x để P nguyên.,1. Không nhận ra miền giá trị của P. 2. Thiếu bước thử lại các giá trị nguyên của P để tìm x.
+RAD-G8-01,8,Hằng đẳng thức,Khai triển HĐT bình phương,Sử dụng HĐT (A \pm B)^2.,Khai triển: (\sqrt{x} - 1)^2,1. Thiếu số hạng 2AB ở giữa. 2. Sai dấu ở số hạng cuối.
+RAD-G8-02,8,Hằng đẳng thức,Khai triển HĐT hiệu hai bình phương,Sử dụng HĐT A^2 - B^2.,Phân tích thành nhân tử: x - 4,1. Không nhận ra x = (\sqrt{x})^2. 2. Phân tích sai thành (x-2)(x+2).
+RAD-G8-03,8,Phân tích đa thức,Đặt nhân tử chung,Tìm và đặt nhân tử chung cho các hạng tử.,Phân tích: x - \sqrt{x},1. Không thấy nhân tử chung \sqrt{x}. 2. Khi rút hết hạng tử quên ghi lại số 1.
+RAD-G8-04,8,Phân tích đa thức,Phân tích tam thức bậc hai (Tách hạng tử),Tách hạng tử bậc nhất để đưa về nhóm hạng tử.,Phân tích: x - 3\sqrt{x} + 2,1. Tách sai dấu hạng tử giữa. 2. Nhóm sai nhân tử chung.
+RAD-G8-05,8,Phân thức,Đổi dấu phân thức,Sử dụng tính chất A/(B-A) = -A/(A-B).,Biến đổi: \sqrt{x}/(1 - x),"1. Đổi dấu mẫu nhưng quên đổi dấu tử. 2. Khi đưa dấu trừ lên trước phân thức, quên đóng ngoặc tử số."
+RAD-G8-06,8,Phân thức,Tìm Mẫu thức chung (MTC),Phân tích các mẫu thành nhân tử và chọn MTC.,Tìm MTC của biểu thức.,1. Chọn MTC bằng cách nhân thẳng 2 mẫu gây cồng kềnh. 2. Không phân tích mẫu thành HĐT trước.
+RAD-G8-07,8,Phân thức,Quy đồng mẫu thức đại số,Nhân tử và mẫu với nhân tử phụ tương ứng.,Quy đồng phân thức.,"1. Chỉ nhân nhân tử phụ vào mẫu, quên nhân tử. 2. Xác định sai nhân tử phụ."
+RAD-G8-08,8,Phân thức,Cộng/Trừ phân thức cùng mẫu,Cộng/Trừ các tử số và giữ nguyên mẫu số chung.,Thực hiện phép trừ 2 phân thức.,1. Sai lầm lớn nhất: Không đổi dấu toàn bộ các hạng tử của tử số thứ 2 khi trước phân thức là dấu trừ.
+RAD-G8-09,8,Phân thức,Nhân/Chia phân thức,"Tử nhân tử, mẫu nhân mẫu. Chia thì nhân nghịch đảo.",Thực hiện phép chia.,1. Quên nghịch đảo phân thức thứ 2 khi chia. 2. Nhân chéo nhưng giữ nguyên phép chia.
+RAD-G8-10,8,Phân thức,Xét dấu phân thức đại số,"Đánh giá phân thức A/B > 0 (A, B cùng dấu) hoặc A/B < 0 (A, B trái dấu).",Tìm x để A/B < 0,1. Cho rằng A/B < 0 thì chỉ cần A < 0. 2. Không lập bảng xét dấu khi tử và mẫu đều chứa x.
+RAD-G7-01,7,Lũy thừa,Tính lũy thừa bậc hai,"Bình phương của một số, một tích.",Tính: (-2\sqrt{x})^2,1. Quên bình phương hệ số. 2. Giữ nguyên dấu trừ khi bình phương.
+RAD-G7-02,7,Căn thức,Tính chất căn bậc hai số học,Áp dụng hằng đẳng thức \sqrt{A^2} = |A|.,Rút gọn: \sqrt{(x-2)^2},"1. Bỏ qua trị tuyệt đối, luôn ghi là x-2. 2. Cho rằng \sqrt{A^2} = \pm A thay vì |A|."
+RAD-G7-03,7,Giá trị tuyệt đối,Bỏ dấu giá trị tuyệt đối,Đánh giá biểu thức bên trong để phá trị tuyệt đối.,Bỏ dấu: |1 - \sqrt{3}|,1. Bỏ dấu tùy tiện không kiểm tra tính âm/dương. 2. Đổi dấu sai một nửa.
+RAD-G7-04,7,Số hữu tỉ,Chuyển vế đổi dấu,Chuyển các số hạng từ vế này sang vế kia và thay đổi dấu.,Giải: 2x - 3 = 5,1. Chuyển vế nhưng quên đổi dấu.
+RAD-G6-01,6,Phân số,Rút gọn phân số/phân thức,Chia cả tử và mẫu cho nhân tử chung.,Rút gọn phân số.,1. Chỉ rút gọn một phần của tổng ở tử số (Triệt tiêu sai).
+RAD-G6-02,6,Số học,Tìm Bội chung nhỏ nhất (BCNN),Phân tích thừa số nguyên tố để tìm BCNN.,Tìm BCNN.,1. Lấy luôn tích làm BCNN. 2. Lấy số mũ nhỏ nhất thay vì lớn nhất.
+RAD-G6-03,6,Phân số,Quy đồng mẫu số cơ bản,Tạo mẫu số chung bằng số học.,Quy đồng.,"1. Cộng tử với tử, mẫu với mẫu."
+RAD-G6-04,6,Số học,Tìm Ước của một số nguyên,Liệt kê tất cả các số nguyên mà số đó chia hết.,Tìm ước của 4.,1. Bỏ sót các ước số âm. 2. Bỏ sót chính nó.
+RAD-G6-05,6,Số học,Tính chất chia hết,Nhận diện a chia hết cho b.,6 chia hết cho x-1.,1. Không chuyển từ bài toán chia hết sang bài toán Ước số.
+RAD-G6-06,6,Số nguyên,Quy tắc dấu ngoặc,Bỏ ngoặc có dấu trừ đằng trước thì phải đổi dấu bên trong.,Rút gọn.,1. Chỉ đổi dấu hạng tử đầu tiên. 2. Bỏ ngoặc nhưng không bỏ dấu trừ bên ngoài.
+SYS-G9-01,9,Hệ phương trình,Giải HPT bằng phương pháp thế,Biểu diễn một ẩn theo ẩn kia và thế vào phương trình còn lại.,Giải HPT bằng PP Thế.,1. Thế sai biểu thức. 2. Khi thế vào PT 2 quên đóng ngoặc biểu thức.
+SYS-G9-02,9,Hệ phương trình,Giải HPT bằng phương pháp cộng (cơ bản),Cộng hoặc trừ vế theo vế khi hệ số bằng hoặc đối nhau.,Giải HPT bằng PP Cộng.,1. Trừ vế theo vế nhưng sai dấu ngoặc ở vế phải.
+SYS-G9-03,9,Hệ phương trình,Giải HPT bằng phương pháp cộng (nhân hệ số),Nhân vế của PT với số thích hợp để tạo hệ số đối nhau.,Giải HPT.,"1. Chỉ nhân hệ số vào vế trái, quên nhân vào hằng số ở vế phải."
+SYS-G9-04,9,Hệ phương trình,Đặt ẩn phụ giải HPT,"Nhận diện cụm biểu thức lặp lại, đặt u, v.",Giải HPT chứa mẫu.,"1. Giải ra u, v nhưng quên thế ngược lại để tìm x, y. 2. Không tìm ĐKXĐ cho ẩn phụ."
+SYS-G9-05,9,Mô hình hóa,Đặt ĐKXĐ cho ẩn thực tế,"Điều kiện vật lý/logic cho ẩn: t, S > 0; người thuộc N*.",Đặt điều kiện cho x.,1. Gọi x là con người nhưng chỉ đặt x > 0 (quên nguyên dương).
+SYS-G9-06,9,Mô hình hóa,Chuyển ngữ từ khóa sang Đại số,"Dịch 'nhiều hơn', 'ít hơn' thành phương trình.",Lập PT.,1. Dịch sai logic: A nhiều hơn B là 5 thì viết A + 5 = B (Sai).
+SYS-G9-07,9,Mô hình hóa,Lập PT/HPT Toán Chuyển động,"Liên kết S, v, t qua các giai đoạn di chuyển.",Lập HPT chuyển động.,1. Lập phương trình sai biến số (cộng Vận tốc cho PT Thời gian).
+SYS-G9-08,9,Mô hình hóa,Lập PT/HPT Toán Năng suất (Chung/Riêng),Sử dụng khái niệm 1 phần x công việc làm năng suất.,Lập PT chung riêng.,1. Cộng trực tiếp thời gian: x + y = 4 (Sai kinh điển).
+SYS-G9-09,9,Mô hình hóa,Lập PT/HPT Toán Phần trăm / Cấu tạo số,Xử lý bài toán tăng giảm phần trăm hoặc cấu tạo số.,Lập PT phần trăm.,1. Viết sai cấu tạo số: số ab viết là a+b thay vì 10a+b.
+SYS-G8-01,8,Phương trình,Giải phương trình bậc nhất 1 ẩn,Giải ax + b = 0.,Giải PT.,1. Chia ngược hệ số (x = b/a thay vì -b/a).
+SYS-G8-02,8,Phương trình,Khử mẫu trong PT chứa ẩn ở mẫu,Quy đồng rồi nhân chéo/bỏ mẫu.,Giải PT chứa ẩn ở mẫu.,1. Bỏ mẫu nhưng không dùng dấu suy ra (=>). 2. Quên đối chiếu ĐKXĐ.
+SYS-G8-03,8,Phương trình,Giải phương trình tích,Giải A.B = 0.,Giải PT tích.,"1. A.B = 0 suy ra A=0 VÀ B=0 (sai logic, phải là HOẶC)."
+SYS-G8-04,8,Mô hình hóa,Lập bảng phân tích Toán Chuyển động,"Cấu trúc bảng S, v, t.","Lập bảng S, v, t.",1. Điền sai cột (Dữ kiện thời gian điền vào cột vận tốc).
+SYS-G8-05,8,Mô hình hóa,Lập bảng phân tích Toán Năng suất,"Cấu trúc bảng Khối lượng, Năng suất, Thời gian.",Lập bảng Năng suất.,1. Nhầm lẫn Tổng sản phẩm và Số sản phẩm làm trong 1 ngày.
+SYS-G8-06,8,Mô hình hóa,Biểu diễn đại lượng chưa biết qua ẩn,Sử dụng công thức t = S/v để điền bảng.,Biểu diễn t.,1. Viết ngược công thức (t = v/S).
+SYS-G7-01,7,Đại số,Tỉ lệ thức và Tích chéo,A/B = C/D => A.D = B.C.,Tìm x.,1. Nhân chéo sai cặp.
+SYS-G7-02,7,Đại lượng,Mối quan hệ Tỉ lệ thuận,S tỉ lệ thuận với v.,Nhận diện tỉ lệ.,1. Nhầm lẫn với tỉ lệ nghịch.
+SYS-G7-03,7,Đại lượng,Mối quan hệ Tỉ lệ nghịch,v và t tỉ lệ nghịch.,Nhận diện tỉ lệ.,1. Lập PT sai logic (v tăng thì t giảm nhưng ghi dấu cộng).
+SYS-G6-01,6,Đo lường,Đổi đơn vị Thời gian (Phút - Giờ),45 phút = 3/4 giờ.,Đổi 40 phút sang giờ.,1. Đổi sai bản chất thập phân (45 phút = 0.45 giờ).
+SYS-G6-02,6,Số học,Tỉ số phần trăm,Tính x% của một số.,Tính 15% của x.,1. Viết 15x thay vì 0.15x.
+SYS-G6-03,6,Phương trình,Tìm x cơ bản,Thành phần chưa biết của phép tính.,Tìm x: 15 - x = 7,1. Lấy 15 + 7 thay vì 15 - 7.
+SYS-G6-04,6,Số học,Cấu tạo số trong hệ thập phân,ab = 10a + b.,Viết biểu thức cấu tạo số.,1. Viết xy thành x*y.
+SYS-G6-05,6,Phân số,Ý nghĩa phân số trong Năng suất,1/x là lượng công việc 1 ngày.,1 ngày làm được bao nhiêu?,1. Cộng trực tiếp thời gian ở mẫu số.
+FUN-G9-01,9,Đồ thị,Vẽ đồ thị hàm số bậc nhất,Xác định 2 điểm và nối lại.,Vẽ đồ thị d.,1. Vẽ đoạn thẳng thay vì đường thẳng. 2. Tính sai giao điểm.
+FUN-G9-02,9,Đồ thị,Vẽ đồ thị Parabol P,Lập bảng 5 điểm và vẽ đường cong.,Vẽ đồ thị P.,1. Vẽ đỉnh Parabol bị gãy khúc (chữ V). 2. Vẽ nhánh quặp vào trong.
+FUN-G9-03,9,Tương giao,Lập Phương trình hoành độ giao điểm,Cho f(x) = g(x).,Lập PTHĐGĐ.,1. Lập phương trình nhưng vẫn để nguyên biến y. 2. Chuyển vế sai dấu.
+FUN-G9-04,9,Tương giao,Tìm tọa độ giao điểm,"Giải PTHĐGĐ tìm x, thay tìm y.",Tìm tọa độ giao điểm.,1. Kết luận ngược tọa độ (y; x) thay vì (x; y). 2. Tìm được x quên tìm y.
+FUN-G9-05,9,Tương giao,Điều kiện vị trí tương đối 2 đường thẳng,"d // d' khi a=a', b!=b'.",Tìm m để d // d'.,1. Xét thiếu điều kiện b khác b'.
+FUN-G9-06,9,Tương giao,Điều kiện d cắt P tại 2 điểm,Delta > 0.,Tìm m để d cắt P.,1. Giải sai bất phương trình Delta > 0 (nhất là chia cho số âm).
+FUN-G9-07,9,Tương giao,Điều kiện d tiếp xúc P,Delta = 0.,Tìm m để d tiếp xúc P.,1. Ghi nhầm nghiệm kép x = -b/a thay vì -b/2a.
+FUN-G9-08,9,Hàm số,Tìm tham số m để đồ thị đi qua M(x0; y0),Thay hoành độ và tung độ.,Tìm m.,1. Lỗi trầm trọng: Thay x thành y và ngược lại.
+FUN-G9-09,9,Tọa độ,Khoảng cách và Tọa độ hình học,Dùng Pytago tính khoảng cách.,Tính khoảng cách.,1. Tính độ dài ra số âm.
+FUN-G8-01,8,Hàm số,Khái niệm hàm số y = f(x),Mối quan hệ 1-1.,Nhận biết hàm số.,1. Nhầm x là hàm của y.
+FUN-G8-02,8,Hàm số,Tính giá trị hàm số f(x) tại x = a,Thay x = a vào f(x).,Tính f(-2).,1. Không đóng ngoặc số âm khi bình phương.
+FUN-G8-03,8,Hàm số,Kiểm tra điểm thuộc đồ thị,Tính f(x_M) so sánh với y_M.,M có thuộc d không?,1. Thay nhầm vị trí x và y.
+FUN-G8-04,8,Hàm số,Hàm số bậc nhất y = ax + b,"Xác định hệ số góc a, tung độ gốc b.",Hàm số đồng biến hay nghịch biến?,1. Xác định sai a khi x đứng sau.
+FUN-G7-01,7,Tọa độ,Mặt phẳng tọa độ Oxy,"Trục hoành Ox, Trục tung Oy.",Nhận biết trục.,"1. Nhầm Ox thẳng đứng, Oy nằm ngang."
+FUN-G7-02,7,Tọa độ,Xác định điểm M(x; y) trên Oxy,Dóng vuông góc để chấm điểm.,Chấm điểm A.,1. Tìm x trên trục Oy và y trên trục Ox.
+FUN-G7-03,7,Tọa độ,Tìm tọa độ của một điểm,Đọc tọa độ từ hình vẽ.,Đọc tọa độ.,1. Đọc y trước x sau.
+FUN-G7-04,7,Đồ thị,Vẽ đồ thị hàm số y = ax,Đường thẳng qua gốc tọa độ.,Vẽ đồ thị y=2x.,1. Chỉ vẽ tia từ O thay vì đường kéo dài.
+FUN-G6-01,6,Trục số,Trục số nguyên,"Chiều dương, chiều âm.",Biểu diễn trục số.,1. Đánh số âm bên phải số 0.
+FUN-G6-02,6,Trục số,Biểu diễn số trên trục số,Đánh dấu vị trí.,Biểu diễn phân số.,1. Biểu diễn sai chiều.
+FUN-G6-03,6,Trục số,Khoảng cách trên trục số,Trị tuyệt đối |a-b|.,Tính khoảng cách.,1. Khoảng cách ra số âm.
+QUA-G9-01,9,Phương trình Bậc 2,"Xác định hệ số a, b, c",ax^2 + bx + c = 0.,Xác định hệ số.,1. Bỏ quên dấu trừ trước hệ số. 2. c thiếu tham số m.
+QUA-G9-02,9,Phương trình Bậc 2,Tính Biệt thức Delta,Delta = b^2 - 4ac.,Tính Delta.,1. b = -3 tính b^2 thành -9. 2. Tính sai dấu của -4ac.
+QUA-G9-03,9,Phương trình Bậc 2,Tính Biệt thức Delta phẩy,Delta' = b'^2 - ac.,Tính Delta'.,1. Quên chia 2 để lấy b'.
+QUA-G9-04,9,Phương trình Bậc 2,Điều kiện về số nghiệm của PT,Xét dấu Delta.,Tìm m để PT có 2 nghiệm.,1. Đề yêu cầu 'có nghiệm' nhưng chỉ xét Delta > 0.
+QUA-G9-05,9,Phương trình Bậc 2,Công thức nghiệm tổng quát,"Tính x1, x2.",Giải PT.,1. Quên đổi dấu b trong tử số. 2. Mẫu số ghi là a thay vì 2a.
+QUA-G9-06,9,Hệ thức Vi-ét,Định lý Vi-ét (Tổng và Tích),"S = -b/a, P = c/a.","Tính S, P.",1. S quên đổi dấu của b. 2. Lấy nhầm P = -c/a.
+QUA-G9-07,9,Hệ thức Vi-ét,Biến đổi biểu thức đối xứng cơ bản,x1^2 + x2^2 = S^2 - 2P.,"Biểu diễn theo S,P.",1. Cho rằng x1^2 + x2^2 = (x1 + x2)^2 (Quên trừ 2P).
+QUA-G9-08,9,Hệ thức Vi-ét,Biến đổi bình phương của Hiệu,(x1 - x2)^2 = S^2 - 4P.,Tính (x1-x2)^2.,1. Khai triển sai thành x1^2 - x2^2. 2. Tính ra kết quả âm.
+QUA-G9-09,9,Hệ thức Vi-ét,Biến đổi biểu thức chứa phân số,"Quy đồng tạo S, P.",Tính 1/x1 + 1/x2.,"1. Quy đồng sai, cộng trực tiếp mẫu: 1/(x1+x2)."
+QUA-G9-10,9,Hệ thức Vi-ét,Biến đổi tổng lập phương,x1^3 + x2^3 = S^3 - 3SP.,Tính tổng lập phương.,1. Khai triển sai HĐT.
+QUA-G9-11,9,Hệ thức Vi-ét,Xét dấu các nghiệm của PT,PT có 2 nghiệm cùng/trái dấu.,Tìm m.,1. Xét thiếu điều kiện Delta > 0 khi cần nghiệm cùng dấu.
+QUA-G9-12,9,Hệ thức Vi-ét,Lập PT khi biết 2 nghiệm,X^2 - SX + P = 0.,Tìm 2 số.,1. Viết sai dấu hệ số S.
+QUA-G9-13,9,Hệ thức Vi-ét,Phân tích tam thức bằng Vi-ét,a(x-x1)(x-x2).,Rút gọn biểu thức chứa nghiệm.,1. Quên nhân hệ số a ở ngoài cùng.
+QUA-G8-01,8,Hằng đẳng thức,Bình phương của một tổng/hiệu,(A \pm B)^2.,Khai triển.,1. Bỏ quên số hạng 2AB.
+QUA-G8-02,8,Đại số,Kỹ thuật thêm bớt hạng tử,Cộng và trừ cùng một lượng.,Tạo HĐT.,1. Thêm vào nhưng quên trừ đi.
+QUA-G8-03,8,Đại số,Giải phương trình tích,A.B = 0.,Giải PT.,1. Mở ngoặc nhân phân phối làm PT phức tạp.
+QUA-G8-04,8,Phân thức,Quy đồng mẫu thức,Tìm mẫu chung x1.x2.,Quy đồng biểu thức nghiệm.,1. Nhân chéo nhưng quên giữ lại mẫu thức chung.
+QUA-G7-01,7,Lũy thừa,Bình phương của số âm,(-a)^2 = a^2.,Tính (-4)^2.,1. Tính ra -16.
+QUA-G7-02,7,Đại số,Thay giá trị biểu thức,Thay m vào biểu thức.,Thay số.,1. Thay số âm nhưng không dùng dấu ngoặc đơn.
+QUA-G7-03,7,Giá trị tuyệt đối,Tính chất của khoảng cách,|A|^2 = A^2.,Rút gọn.,1. Khai căn thiếu trị tuyệt đối.
+QUA-G6-01,6,Số học,Quy tắc nhân hai số nguyên,"Cùng dấu dương, trái dấu âm.",Tính -4ac.,1. Nhân 2 số âm ra số âm.
+QUA-G6-02,6,Số học,Số đối của một số nguyên,Đổi dấu một số.,Tìm số đối.,1. Viết -(-7) nhưng khi tính vẫn để dấu trừ.
+QUA-G6-03,6,Số học,Quy tắc chia hai số nguyên,Dấu của thương.,Xét dấu P.,1. Chia hai số khác dấu ghi kết quả dương.
+QUA-G6-04,6,Số học,Thứ tự thực hiện phép tính,Lũy thừa -> Nhân/Chia -> Cộng/Trừ.,Tính toán.,1. Làm phép trừ trước phép nhân.
+QUA-G6-05,6,Đại số,Bất đẳng thức cơ bản,A^2 >= 0.,Đánh giá Delta.,1. Cho rằng m^2 có thể âm.
+QUA-G6-06,6,Đại số,Khái niệm Ước số và Bội số,Ứng dụng Vi-ét nguyên.,Tìm m nguyên.,1. Quên ước số âm.
+GEO-G9-01,9,Góc với đường tròn,Góc ở tâm,"Đỉnh ở tâm, bằng cung chắn.",Đọc góc ở tâm.,1. Gọi sai tên góc.
+GEO-G9-02,9,Góc với đường tròn,Góc nội tiếp,"Đỉnh trên đường tròn, bằng nửa cung chắn.",Tính góc.,1. Quên chia 2 số đo cung bị chắn.
+GEO-G9-03,9,Góc với đường tròn,Góc tạo bởi tiếp tuyến và dây cung,Bằng nửa cung chắn.,Đọc góc.,1. Kẻ tiếp tuyến nhưng vẽ cạnh kia không phải dây cung.
+GEO-G9-04,9,Góc với đường tròn,Góc cùng chắn một cung,Các góc nội tiếp bằng nhau.,Chứng minh góc bằng nhau.,1. Mắt nhìn thấy bằng nhau nên ghi luôn mà không lập luận cung chắn.
+GEO-G9-05,9,Góc với đường tròn,Góc đỉnh trong/ngoài đường tròn,Nửa tổng / Nửa hiệu 2 cung.,Tính góc.,1. Nhầm lẫn giữa dấu cộng và trừ.
+GEO-G9-06,9,Tứ giác nội tiếp,TGNT DH1: Tổng 2 góc đối = 180,Nhận biết tứ giác nội tiếp.,Chứng minh TGNT.,1. Ngộ nhận hình vuông góc mà không chứng minh.
+GEO-G9-07,9,Tứ giác nội tiếp,TGNT DH2: Góc ngoài = góc trong đối diện,Hệ quả DH1.,Chứng minh góc.,1. Xác định sai đỉnh đối diện.
+GEO-G9-08,9,Tứ giác nội tiếp,TGNT DH3: 2 đỉnh kề nhìn 1 cạnh,Hai góc bằng nhau cùng nhìn 1 cạnh.,Chứng minh TGNT.,1. 2 góc bằng nhau nhưng không nhìn cùng 1 cạnh.
+GEO-G9-09,9,Tứ giác nội tiếp,Định nghĩa 4 điểm cùng thuộc đường tròn,Cách đều 1 tâm.,Chứng minh 4 điểm thuộc (O).,1. Không tìm được tâm.
+GEO-G9-10,9,Tứ giác nội tiếp,Tứ giác nội tiếp suy ra góc,Hành động ngược của DH3.,Suy ra 2 góc bằng nhau.,1. Suy ra 2 góc đối bằng nhau (sai lầm nghiêm trọng).
+GEO-G9-11,9,Đường tròn,Tính chất 2 tiếp tuyến cắt nhau,"Phân giác, trung trực.",Chứng minh vuông góc.,1. Gọi sai tên tia phân giác.
+GEO-G9-12,9,Đường tròn,Đường kính và Dây cung,Đường kính qua trung điểm thì vuông góc dây.,Chứng minh vuông góc.,1. Quên điều kiện dây không qua tâm.
+GEO-G9-13,9,Hệ thức lượng,Hệ thức lượng: Cạnh góc vuông,b^2 = a.b'.,Tính cạnh.,1. Không chứng minh tam giác vuông trước khi dùng.
+GEO-G9-14,9,Hệ thức lượng,Hệ thức lượng: Đường cao,h^2 = b'.c'.,Tính đường cao.,1. Nghịch đảo phân số sai.
+GEO-G9-15,9,Chứng minh đẳng thức,Chứng minh đẳng thức tích bằng Đồng dạng,a.d = b.c.,Chứng minh AB.AC=AD.AE.,1. Lập sai tỉ lệ thức từ tam giác đồng dạng.
+GEO-G9-16,9,Chứng minh đẳng thức,Chứng minh qua đại lượng trung gian,A.B = X.Y = C.D.,Chứng minh tích bằng nhau.,1. Không tìm được cạnh chung trung gian.
+GEO-G9-17,9,Đường tròn,Góc nội tiếp chắn nửa đường tròn,Góc nội tiếp bằng 90 độ. Nền tảng tạo TGNT.,Chứng minh góc vuông.,1. Ngộ nhận tam giác vuông mà quên ghi lý do chắn nửa (O).
+GEO-G8-01,8,Tam giác đồng dạng,Trường hợp đồng dạng (g-g),2 góc bằng nhau.,Chứng minh đồng dạng.,1. Viết sai thứ tự đỉnh tương ứng (Lỗi chết người).
+GEO-G8-02,8,Tam giác đồng dạng,Trường hợp đồng dạng (c-g-c),"2 cạnh tỷ lệ, góc xen giữa.",Chứng minh đồng dạng.,1. Xét góc không xen giữa.
+GEO-G8-03,8,Tam giác đồng dạng,Tỉ số diện tích,Bằng bình phương tỉ số đồng dạng.,Tính diện tích.,1. Quên bình phương k.
+GEO-G8-04,8,Hình học tỷ lệ,Định lý Thales,Đường thẳng song song tạo tỉ lệ.,Tính tỉ số.,1. Lập sai tỉ lệ đoạn thẳng.
+GEO-G8-05,8,Tam giác,Đường trung bình tam giác,Song song và bằng một nửa cạnh đáy.,Chứng minh song song.,1. Quên chia 2.
+GEO-G8-06,8,Tam giác vuông,Định lý Pythagore,a^2 = b^2 + c^2.,Tính độ dài.,1. Trừ sai khi tìm cạnh góc vuông.
+GEO-G8-07,8,Tam giác,Đường phân giác trong tam giác,Chia cạnh đối diện tỉ lệ với 2 cạnh kề.,Tính tỉ số.,1. Lập tỉ số sai tương ứng.
+GEO-G8-08,8,Tứ giác,Hình chữ nhật,3 góc vuông.,Chứng minh HCN.,1. Chỉ chứng minh 2 góc vuông.
+GEO-G7-01,7,Tam giác,Tam giác bằng nhau (c-c-c),3 cạnh bằng nhau.,Chứng minh bằng nhau.,1. Ghi sai thứ tự đỉnh.
+GEO-G7-02,7,Tam giác,Tam giác bằng nhau (c-g-c),Góc xen giữa.,Chứng minh bằng nhau.,1. Góc không xen giữa.
+GEO-G7-03,7,Tam giác,Tam giác bằng nhau (g-c-g),Cạnh xen giữa 2 góc.,Chứng minh bằng nhau.,1. Lấy 2 góc không kề cạnh.
+GEO-G7-04,7,Góc & Đường thẳng,Góc đối đỉnh,2 đường cắt nhau.,Đọc góc.,1. Góc bị gãy.
+GEO-G7-05,7,Góc & Đường thẳng,Góc So le trong / Đồng vị,2 đường song song.,Chứng minh song song.,1. Ngộ nhận 2 góc bằng nhau khi chưa song song.
+GEO-G7-06,7,Góc & Đường thẳng,Vuông góc đến song song,Cùng vuông góc đường thứ 3.,Chứng minh // .,1. Trình bày thiếu bước.
+GEO-G7-07,7,Đường đồng quy,Trực tâm tam giác,Giao 3 đường cao.,Chứng minh trực tâm.,1. Nhầm trực tâm và trọng tâm.
+GEO-G7-08,7,Đường đồng quy,Trọng tâm tam giác,Tỉ lệ 2/3.,Tính độ dài.,1. Lấy tỉ lệ 1/2.
+GEO-G7-09,7,Tam giác đặc biệt,Tam giác cân,"2 cạnh, 2 góc đáy.",Chứng minh cân.,1. Áp dụng tính chất đường cao cho tam giác thường.
+GEO-G7-10,7,Tam giác,Tổng 3 góc tam giác,Bằng 180.,Tính góc.,1. Cộng trừ số học sai.
+GEO-G7-11,7,Góc & Đường thẳng,Góc kề bù,Tổng 180.,Tính góc.,1. 2 cạnh không phải tia đối nhưng vẫn cho tổng 180.
+GEO-G9-00,9,Đường tròn,Khái niệm đường tròn (O;R),"Tập hợp điểm cách O một khoảng bằng R. Nhận biết cung, dây cung, đường kính.",Điểm M có thuộc đường tròn (O;R) khi OM = ?,1. Nhầm đường tròn với hình tròn. 2. Cho rằng tâm thuộc đường tròn.
+QUA-G9-00,9,Phương trình Bậc 2,Đưa phương trình về dạng chuẩn ax²+bx+c=0,"Chuyển vế, thu gọn để đưa PT bậc 2 về dạng chuẩn. Xác định a ≠ 0.",Đưa PT 3x² = 5x - 2 về dạng chuẩn.,1. Quên chuyển vế đổi dấu. 2. Để a < 0 mà không nhân -1 hai vế.
+GEO-G8-09,8,Tam giác đồng dạng,Trường hợp đồng dạng (c-c-c),Ba cặp cạnh tương ứng tỉ lệ => đồng dạng.,Cho AB/DE = BC/EF = AC/DF. Kết luận?,1. Viết sai thứ tự đỉnh tương ứng. 2. Tỉ số cạnh không nhất quán (không cùng chiều).
+SYS-G8-07,8,Phương trình,Khai triển và thu gọn đa thức (phân phối),"Nhân đơn thức với đa thức, phân phối khi thế vào PT.",Khai triển: 2(3x - 5) + x = 4.,1. Phân phối sai dấu trước ngoặc. 2. Không nhân hệ số vào tất cả hạng tử.

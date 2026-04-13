@@ -1,0 +1,77 @@
+// This is your Prisma schema file.
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Concept {
+  id               String         @id
+  gradeLevel       Int
+  topicCategory    String
+  nameVn           String
+  description      String
+  masteryQuestion  String
+  misconceptions   String
+  
+  // Relations
+  prerequisitesFor Prerequisite[] @relation("TargetConcept")
+  prerequisites    Prerequisite[] @relation("SourceConcept")
+  bugs             BugEntry[]
+}
+
+model Prerequisite {
+  id               String   @id @default(uuid())
+  targetId         String
+  sourceId         String
+  relationshipType String   @default("HARD_PREREQUISITE")
+
+  targetConcept    Concept  @relation("TargetConcept", fields: [targetId], references: [id])
+  sourceConcept    Concept  @relation("SourceConcept", fields: [sourceId], references: [id])
+
+  @@unique([targetId, sourceId])
+}
+
+/// A single specific misconception extracted from a Concept's common_misconceptions text.
+/// FK to Concept ensures each bug is traceable to its parent knowledge node.
+/// This enables the CDM 3-step pipeline: LLM → bug_id → concept_id (deterministic).
+model BugEntry {
+  id          String  @id    // e.g. "B-RAD-G9-01-01"
+  conceptId   String         // FK → Concept.id
+  bugIndex    Int            // 1, 2, 3… (order within the concept)
+  description String         // The actual misconception text in Vietnamese
+
+  concept     Concept @relation(fields: [conceptId], references: [id])
+
+  @@index([conceptId])
+}
+
+/// Stores past diagnostic requests and AI results for the Knowledge Expert to review.
+model DiagnosticHistory {
+  id                String   @id @default(uuid())
+  createdAt         DateTime @default(now())
+
+  // User Inputs
+  problem           String
+  studentAnswer     String
+  targetConceptCode String?
+
+  // Stage 1: Grading Output
+  gradingResult     String?  // JSON blob containing score, steps, feedbacks
+  totalScore        Float?
+  maxScore          Float?
+
+  // Stage 2: CDM AI Output (Multi-Gaps Supported)
+  matchedBugIds     String?  // JSON array string `["id1", "id2"]`
+  rootConceptIds    String?  // JSON array string `["id1", "id2"]`
+  confidence        String   // "HIGH" | "MEDIUM" | "LOW" (Overall confidence)
+  severity          String   // "CONCEPTUAL_GAP" | "EXECUTION_SLIP"
+  explanation       String
+  diagnosticRaw     String?  // JSON blob containing full stage 2 output
+  expertNotes       String?  // Editor notes for manual hitL
+}
