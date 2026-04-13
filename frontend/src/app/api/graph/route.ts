@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma';
 
 export async function GET() {
   try {
@@ -9,7 +7,7 @@ export async function GET() {
     const prerequisites = await prisma.prerequisite.findMany();
 
     // Map Prisma models to a clean representation for the frontend
-    const nodes = concepts.map((c) => ({
+    const nodes = (concepts || []).map((c) => ({
       id: c.id,
       gradeLevel: c.gradeLevel,
       topicCategory: c.topicCategory,
@@ -19,7 +17,7 @@ export async function GET() {
       misconceptions: c.misconceptions,
     }));
 
-    const edges = prerequisites.map((p) => ({
+    const edges = (prerequisites || []).map((p) => ({
       id: p.id,
       source: p.sourceId,
       target: p.targetId,
@@ -30,10 +28,8 @@ export async function GET() {
   } catch (error) {
     console.error('Error fetching graph data:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch graph data' },
+      { error: 'Failed to fetch graph data', nodes: [], edges: [] },
       { status: 500 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }
