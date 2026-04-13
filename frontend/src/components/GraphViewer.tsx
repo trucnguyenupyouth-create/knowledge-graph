@@ -14,11 +14,12 @@ import ReactFlow, {
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import dagre from 'dagre';
-import { Loader2, Layers, Microscope, X } from 'lucide-react';
+import { Loader2, Layers, Microscope, X, Filter, Target } from 'lucide-react';
 
 import ConceptNode from './ConceptNode';
 import Sidebar from './Sidebar';
 import DiagnosticChat from './DiagnosticChat';
+import ConceptNavigator from './ConceptNavigator';
 
 const nodeTypes = { concept: ConceptNode };
 
@@ -26,17 +27,24 @@ const dagreGraph = new dagre.graphlib.Graph();
 dagreGraph.setDefaultEdgeLabel(() => ({}));
 
 const getLayoutedElements = (nodes: any[], edges: any[], direction = 'BT') => {
+  if (nodes.length === 0) return { nodes, edges };
+  
   const isHorizontal = direction === 'LR';
-  dagreGraph.setGraph({ rankdir: direction, nodesep: 60, ranksep: 180, align: 'UL' });
-  nodes.forEach((node) => dagreGraph.setNode(node.id, { width: 280, height: 70 }));
-  edges.forEach((edge) => dagreGraph.setEdge(edge.source, edge.target));
-  dagre.layout(dagreGraph);
+  const g = new dagre.graphlib.Graph();
+  g.setGraph({ rankdir: direction, nodesep: 60, ranksep: 180, align: 'UL' });
+  g.setDefaultEdgeLabel(() => ({}));
+
+  nodes.forEach((node) => g.setNode(node.id, { width: 280, height: 70 }));
+  edges.forEach((edge) => g.setEdge(edge.source, edge.target));
+  dagre.layout(g);
+
   nodes.forEach((node) => {
-    const pos = dagreGraph.node(node.id);
+    const pos = g.node(node.id);
     node.targetPosition = isHorizontal ? 'left' : 'bottom';
     node.sourcePosition = isHorizontal ? 'right' : 'top';
     node.position = { x: pos.x - 140, y: pos.y - 35 };
   });
+
   return { nodes, edges };
 };
 
@@ -46,10 +54,13 @@ function GraphViewerInner() {
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [rawConcepts, setRawConcepts] = useState<any[]>([]);
+  const [rawEdges, setRawEdges] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedConcept, setSelectedConcept] = useState<any>(null);
   const [showDiagnostics, setShowDiagnostics] = useState(false);
   const [highlightedNodeIds, setHighlightedNodeIds] = useState<string[]>([]);
+  const [focusNodeId, setFocusNodeId] = useState<string | null>(null);
+  const [showFullGraph, setShowFullGraph] = useState(true);
 
   const { fitView } = useReactFlow();
 
@@ -59,6 +70,7 @@ function GraphViewerInner() {
         const res = await fetch('/api/graph');
         const data = await res.json();
         setRawConcepts(data.nodes);
+        setRawEdges(data.edges);
 
         const initialNodes = data.nodes.map((node: any) => ({
           id: node.id,
@@ -93,6 +105,73 @@ function GraphViewerInner() {
     }
     fetchData();
   }, [setNodes, setEdges]);
+
+  // Logic to find neighborhood (related nodes)
+  const getNeighborhoodIds = useCallback((focusId: string) => {
+    const related = new Set<string>();
+    related.add(focusId);
+
+    // Add ancestors (prerequisites)
+    const findAncestors = (id: string) => {
+      rawEdges.forEach(edge => {
+        if (edge.target === id && !related.has(edge.source)) {
+          related.add(edge.source);
+          findAncestors(edge.source);
+        }
+      });
+    };
+
+    // Add immediate consequences (children)
+    const findChildren = (id: string) => {
+      rawEdges.forEach(edge => {
+        if (edge.source === id && !related.has(edge.target)) {
+          related.add(edge.target);
+          // Only immediate children for focus mode to avoid exploding the graph
+        }
+      });
+    };
+
+    findAncestors(focusId);
+    findChildren(focusId);
+    return Array.from(related);
+  }, [rawEdges]);
+
+  // Focus and Filter Effect
+  useEffect(() => {
+    if (nodes.length === 0) return;
+
+    let targetNodes = rawConcepts.map(c => ({
+      id: c.id,
+      type: 'concept',
+      data: { ...c },
+      position: { x: 0, y: 0 }
+    }));
+
+    let targetEdges = rawEdges.map(e => ({
+      id: e.id,
+      source: e.source,
+      target: e.target,
+      type: 'smoothstep',
+      animated: true,
+      markerEnd: { type: MarkerType.ArrowClosed, width: 14, height: 14, color: '#818cf8' },
+      style: { stroke: '#94a3b8', strokeWidth: 2, opacity: 0.6 }
+    }));
+
+    if (focusNodeId && !showFullGraph) {
+      const neighborhood = getNeighborhoodIds(focusNodeId);
+      targetNodes = targetNodes.filter(n => neighborhood.includes(n.id));
+      targetEdges = targetEdges.filter(e => neighborhood.includes(e.source) && neighborhood.includes(e.target));
+    }
+
+    const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(targetNodes, targetEdges, 'BT');
+    
+    setNodes(layoutedNodes);
+    setEdges(layoutedEdges);
+
+    if (focusNodeId) {
+      setTimeout(() => fitView({ nodes: [{ id: focusNodeId }], duration: 1000, padding: 1.5 }), 200);
+    }
+  }, [focusNodeId, showFullGraph, rawConcepts, rawEdges, fitView, setNodes, setEdges, getNeighborhoodIds]);
 
   // Highlight effect
   useEffect(() => {
@@ -131,7 +210,17 @@ function GraphViewerInner() {
 
   const onNodeClick = useCallback((event: React.MouseEvent, node: any) => {
     setSelectedConcept({ id: node.id, ...node.data });
+    setFocusNodeId(node.id);
   }, []);
+
+  const handleNavigatorSelect = useCallback((id: string) => {
+    const concept = rawConcepts.find(c => c.id === id);
+    if (concept) {
+      setSelectedConcept(concept);
+      setFocusNodeId(id);
+      setShowFullGraph(false); // Auto-focus in neighborhood mode when selecting from navigator
+    }
+  }, [rawConcepts]);
 
   if (loading) {
     return (
@@ -149,68 +238,99 @@ function GraphViewerInner() {
 
   return (
     <div className="w-full h-full bg-slate-50 relative overflow-hidden flex font-sans">
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        onNodeClick={onNodeClick}
-        nodeTypes={nodeTypes}
-        connectionLineType={ConnectionLineType.SmoothStep}
-        fitView
-        minZoom={0.05}
-        maxZoom={1.5}
-        fitViewOptions={{ padding: 0.2 }}
-      >
-        <Background
-          color="#cbd5e1"
-          variant={BackgroundVariant.Dots}
-          gap={32}
-          size={1.5}
-          className="opacity-70"
-        />
-        <Controls className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg border border-slate-200/50 mb-12" showInteractive={false} />
+      <ConceptNavigator 
+        concepts={rawConcepts} 
+        onSelect={handleNavigatorSelect} 
+        activeId={focusNodeId || undefined} 
+      />
 
-        {/* Info Panel */}
-        <Panel position="top-left" className="bg-white/80 backdrop-blur-xl p-6 shadow-2xl rounded-2xl border border-white m-8 max-w-[380px]">
-          <div className="flex items-center space-x-3 mb-3">
-            <div className="p-2 bg-indigo-100 text-indigo-600 rounded-xl shadow-inner">
-              <Layers size={20} className="stroke-[2.5]" />
+      <div className="flex-1 relative">
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onNodeClick={onNodeClick}
+          nodeTypes={nodeTypes}
+          connectionLineType={ConnectionLineType.SmoothStep}
+          fitView
+          minZoom={0.05}
+          maxZoom={1.5}
+          fitViewOptions={{ padding: 0.2 }}
+        >
+          <Background
+            color="#cbd5e1"
+            variant={BackgroundVariant.Dots}
+            gap={32}
+            size={1.5}
+            className="opacity-70"
+          />
+          <Controls className="bg-white/80 backdrop-blur-md rounded-xl shadow-lg border border-slate-200/50 mb-12" showInteractive={false} />
+
+          {/* Info Panel */}
+          <Panel position="top-left" className="bg-white/70 backdrop-blur-lg p-5 shadow-xl rounded-2xl border border-white/50 m-6 max-w-[320px]">
+            <div className="flex items-center space-x-3 mb-2">
+              <div className="p-1.5 bg-indigo-100 text-indigo-600 rounded-lg">
+                <Layers size={18} />
+              </div>
+              <h1 className="text-xl font-black text-slate-900 tracking-tight">KST Engine</h1>
             </div>
-            <h1 className="text-2xl font-black text-slate-900 tracking-tight">KST Engine</h1>
-          </div>
-          <p className="text-[13px] text-slate-500 font-medium leading-relaxed">
-            Deterministic pedagogical timeline — Grade 6 foundations to Grade 9 mastery.
-          </p>
-          <div className="mt-4 pt-4 border-t border-slate-200/60 grid grid-cols-2 gap-y-2.5">
-            {[
-              { color: 'bg-emerald-400', label: 'Grade 6' },
-              { color: 'bg-amber-400', label: 'Grade 7' },
-              { color: 'bg-orange-400', label: 'Grade 8' },
-              { color: 'bg-rose-400', label: 'Grade 9' },
-            ].map(({ color, label }) => (
-              <div key={label} className="flex items-center">
-                <div className={`w-3 h-3 rounded ${color} shadow-sm`} />
-                <span className="text-xs font-bold text-slate-600 ml-2">{label}</span>
-              </div>
-            ))}
-          </div>
-        </Panel>
-
-        {/* Highlight indicator + clear button */}
-        {highlightedNodeIds.length > 0 && (
-          <Panel position="top-right" className="m-8">
-            <div className="flex flex-col items-end space-y-2">
-              <div className="flex items-center space-x-2 bg-rose-600/90 backdrop-blur-sm text-white text-[12px] font-bold px-4 py-2.5 rounded-xl shadow-lg shadow-rose-500/30">
-                <span>📍 Đang highlight {highlightedNodeIds.length} Lỗ hổng</span>
-                <button onClick={clearHighlight} className="ml-1 hover:opacity-70 transition-opacity">
-                  <X size={14} />
-                </button>
-              </div>
+            
+            <div className="flex items-center space-x-2 mt-4 p-1 bg-slate-100/50 rounded-xl border border-slate-200/30">
+              <button 
+                onClick={() => setShowFullGraph(true)}
+                className={clsx(
+                  "flex-1 flex items-center justify-center space-x-1.5 py-1.5 px-3 rounded-lg text-[11px] font-bold transition-all",
+                  showFullGraph ? "bg-white text-indigo-600 shadow-sm" : "text-slate-400 hover:text-slate-600"
+                )}
+              >
+                <Filter size={12} />
+                <span>Toàn cảnh</span>
+              </button>
+              <button 
+                onClick={() => setShowFullGraph(false)}
+                className={clsx(
+                  "flex-1 flex items-center justify-center space-x-1.5 py-1.5 px-3 rounded-lg text-[11px] font-bold transition-all",
+                  !showFullGraph ? "bg-white text-indigo-600 shadow-sm" : "text-slate-400 hover:text-slate-600"
+                )}
+              >
+                <Target size={12} />
+                <span>Focus Mode</span>
+              </button>
             </div>
           </Panel>
-        )}
-      </ReactFlow>
+
+          {/* Focus mode indicator */}
+          {focusNodeId && !showFullGraph && (
+            <Panel position="top-right" className="m-8">
+               <div className="bg-indigo-600 text-white px-4 py-2 rounded-xl shadow-lg flex items-center space-x-2 font-bold text-xs animate-in slide-in-from-top duration-500">
+                 <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                 <span>Viewing Neighborhood: {focusNodeId}</span>
+                 <button 
+                   onClick={() => setShowFullGraph(true)}
+                   className="ml-2 p-1 hover:bg-white/20 rounded"
+                 >
+                   <X size={14} />
+                 </button>
+               </div>
+            </Panel>
+          )}
+
+          {/* Highlight indicator */}
+          {highlightedNodeIds.length > 0 && (
+            <Panel position="bottom-right" className="m-8">
+              <div className="flex flex-col items-end space-y-2">
+                <div className="flex items-center space-x-2 bg-rose-600/90 backdrop-blur-sm text-white text-[11px] font-bold px-4 py-2.5 rounded-xl shadow-lg">
+                  <span className="animate-pulse">📍 Highlight {highlightedNodeIds.length} lỗ hổng</span>
+                  <button onClick={clearHighlight} className="ml-1 hover:opacity-70 transition-opacity">
+                    <X size={12} />
+                  </button>
+                </div>
+              </div>
+            </Panel>
+          )}
+        </ReactFlow>
+      </div>
 
       {/* Concept Detail Sidebar */}
       {selectedConcept && (
